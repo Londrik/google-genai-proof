@@ -1,4 +1,3 @@
-
 from google import genai
 from google.genai import types
 
@@ -20,10 +19,7 @@ class ContentAnalyzerService:
         self.client = client or GeminiClientFactory.create_client(self.config)
 
     def analyze_text(self, target_name: str, raw_content: str) -> AuditReport:
-        prompt = (
-            f"Artefato a ser auditado: {target_name}\n\n"
-            f"Conteúdo:\n{raw_content}"
-        )
+        prompt = f"Artefato a ser auditado: {target_name}\n\nConteúdo:\n{raw_content}"
 
         gen_config = types.GenerateContentConfig(
             temperature=self.config.default_temperature,
