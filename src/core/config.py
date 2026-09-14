@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
+
 @dataclass(frozen=True)
 class Settings:
     api_key: str = os.getenv("GEMINI_API_KEY", "")
@@ -17,5 +18,6 @@ class Settings:
     def validate(self) -> None:
         if not self.api_key:
             raise ValueError("A variável de ambiente 'GEMINI_API_KEY' não está configurada.")
+
 
 settings = Settings()

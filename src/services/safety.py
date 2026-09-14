@@ -1,4 +1,3 @@
-
 from google import genai
 from google.genai import types
 
@@ -10,9 +9,7 @@ from src.schemas.safety import SafetyBlockReason, SafetyCheckResult
 class ResponsibleAIService:
     """Gerencia políticas de moderação, filtros de segurança e inspeção de finish_reason."""
 
-    def __init__(
-        self, client: genai.Client | None = None, cfg: Settings | None = None
-    ) -> None:
+    def __init__(self, client: genai.Client | None = None, cfg: Settings | None = None) -> None:
         self.config = cfg or settings
         self.client = client or GeminiClientFactory.create_client(self.config)
 
@@ -64,9 +61,7 @@ class ResponsibleAIService:
             return SafetyCheckResult(
                 is_blocked=True,
                 block_reason=SafetyBlockReason.SAFETY,
-                disclaimer=(
-                    "Conteúdo bloqueado por violar os limites estritos de segurança (Responsible AI)."
-                ),
+                disclaimer=("Conteúdo bloqueado por violar limites de segurança (Responsible AI)."),
             )
 
         if not response.text:

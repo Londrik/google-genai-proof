@@ -9,10 +9,12 @@ def test_settings_validation_missing_key() -> None:
     with pytest.raises(ValueError, match="GEMINI_API_KEY"):
         empty_settings.validate()
 
+
 def test_settings_default_deterministic_parameters() -> None:
     cfg = Settings(api_key="valid-mock-key")
     assert cfg.default_temperature == 0.0
     assert cfg.default_seed == 42
+
 
 def test_deterministic_content_config() -> None:
     config = GeminiClientFactory.get_deterministic_config(
