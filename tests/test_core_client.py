@@ -1,6 +1,8 @@
 import pytest
-from src.core.config import Settings
+
 from src.core.client import GeminiClientFactory
+from src.core.config import Settings
+
 
 def test_settings_validation_missing_key() -> None:
     empty_settings = Settings(api_key="")
